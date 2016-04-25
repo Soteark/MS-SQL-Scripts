@@ -1,6 +1,10 @@
 --Check DB Mail Status==========================================
 select * from msdb.dbo.sysmail_sentitems
+order by mailitem_id desc
+
 select * from msdb.dbo.sysmail_unsentitems 
+order by mailitem_id desc
+
 select * from msdb.dbo.sysmail_faileditems
 order by mailitem_id desc
 
