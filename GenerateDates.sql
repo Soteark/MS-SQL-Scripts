@@ -2,7 +2,7 @@
 DECLARE @tNumTbl TABLE ( Number INT );
 
 
--- CTE Start Comment
+-- CTE Start Comments
 WITH
 	CTE_Numbers ( Number ) AS (
 		SELECT 0 [Number]
