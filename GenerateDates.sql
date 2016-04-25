@@ -1,6 +1,8 @@
 --Test Line Addtion
 DECLARE @tNumTbl TABLE ( Number INT );
 
+
+-- CTE
 WITH
 	CTE_Numbers ( Number ) AS (
 		SELECT 0 [Number]
