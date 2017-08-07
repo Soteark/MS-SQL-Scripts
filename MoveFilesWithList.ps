@@ -1,0 +1,9 @@
+$aryfiles = Get-Content "C:\Users\Scarpa\Documents\PowershellTesting\FileMove\FileList.txt"
+$sourceDir = "C:\Users\Scarpa\Documents\PowershellTesting\FileMove\SourceDir"
+$destinationDir = "C:\Users\Scarpa\Documents\PowershellTesting\FileMove\TargetDir"
+$sourceFiles = Get-ChildItem -Path $sourceDir -Recurse -Include $aryfiles | 
+Select-Object -ExpandProperty FullName
+foreach ($sourceFile in $SourceFiles)
+{
+Move-Item $sourcefile -Destination $destinationDir
+}
