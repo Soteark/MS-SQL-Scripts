@@ -2,7 +2,7 @@ with FailedExecs
           as
           (
                    select Distinct
-                             s.executionid
+                         --comment out    s.executionid
                    from dbo.sysssislog_Singapore  s
                    where event='OnError'
           ),
