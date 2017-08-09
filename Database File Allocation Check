@@ -21,7 +21,7 @@ select
 			else 'Growth value is a percentage.'
 		end
 from sys.database_files
-
+--test line
 /*=====SQL Server 2000=====*/
 select
 	name [FileName]
