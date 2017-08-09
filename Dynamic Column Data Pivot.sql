@@ -13,6 +13,7 @@ select
 into tmp_data1
 from Data_Table t1
 order by
+--new comment
 	t1.PvtCol
 	,t1.Static_Col
 go
