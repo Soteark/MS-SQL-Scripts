@@ -1,5 +1,5 @@
-declare
-	@Test1 as table (
+DECLARE
+	@Test1 AS TABLE(
 		store_id varchar(50)
 		,div_id varchar(50)
 		,dept_id varchar(50)
@@ -56,3 +56,7 @@ order by
 	,Division
 	,Dept
 	,Major
+
+
+
+-- this Example needs to be updated to be more universal
