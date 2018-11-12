@@ -57,6 +57,4 @@ order by
 	,Dept
 	,Major
 
-
-
--- this Example needs to be updated to be more universal
+/*-- Upate this later --*/
