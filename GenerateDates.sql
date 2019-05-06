@@ -24,3 +24,4 @@ SELECT DATEADD(DAY,Number+1,@dStartDt) [Date]
 FROM @tNumTbl TNT
 WHERE DATEADD(DAY,Number+1,@dStartDt) <= @dEndDt
 
+--Date Generating
