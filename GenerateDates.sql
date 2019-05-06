@@ -25,3 +25,4 @@ FROM @tNumTbl TNT
 WHERE DATEADD(DAY,Number+1,@dStartDt) <= @dEndDt
 
 --Date Generating
+--do this twice
