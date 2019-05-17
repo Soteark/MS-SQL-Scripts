@@ -14,3 +14,6 @@ where
 	t1.backup_start_date >= '7/1/13'
 order by backup_start_date desc
 
+--
+
+select * from dbo.tbl_site
