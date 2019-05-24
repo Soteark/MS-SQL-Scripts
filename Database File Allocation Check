@@ -17,6 +17,7 @@ WHEN growth = 0 THEN 'File size is fixed and will not grow.'
 WHEN growth > 0
      AND is_percent_growth = 0 THEN 'Growth value is in units of 8-KB pages.'
 ELSE 'Growth value is a percentage.'
+
 END END --CHANGE ONE WAS HERE
 FROM sys.database_files --test line
 new line here
