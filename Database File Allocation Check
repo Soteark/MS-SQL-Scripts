@@ -1,40 +1,40 @@
 /*=====SQL Server 2005+=====*/
-select
-	name [FileName]
-	,cast(size*1.0/128 as decimal(18,2)) [FileSizeinMB]
-	,cast(fileproperty(name,'SpaceUsed')/128 as decimal(18,2)) [SpaceUsedMB]
-	,cast(size/128.0 - cast(fileproperty(name,'SpaceUsed') as int)/128.0 as decimal(18,2)) [FreeSpaceMB]
-	,cast(cast(((cast(size as decimal(18,5)) - cast(fileproperty(name,'SpaceUsed') as decimal(18,5))) / size)*100 as decimal(18,2)) as varchar(10))+'%' [VolumeFree]
-	,'MaximumSizeinMB' =
-		case max_size
-			when 0 then 'No growth is allowed.'
-			when -1 then 'Autogrowth is on.'
-			when 268435456 then 'Log file will grow to a maximum size of 2 TB.'
-			else cast (max_size*1.0/128 as nvarchar(30))
-		end,
-	growth 'GrowthValue'
-	,growth*8/1024 'GrowthValueinMB'
-	,'GrowthIncrement' = 
-		case
-			when growth = 0 then 'File size is fixed and will not grow.'
-			when growth > 0 and is_percent_growth = 0 then 'Growth value is in units of 8-KB pages.'
-			else 'Growth value is a percentage.'
-		end
-from sys.database_files
---test line
+SELECT name [FileName] ,
+       cast(SIZE*1.0/128 AS decimal(18,2)) [FileSizeinMB] ,
+       cast(fileproperty(name,'SpaceUsed')/128 AS decimal(18,2)) [SpaceUsedMB] ,
+       cast(SIZE/128.0 - cast(fileproperty(name,'SpaceUsed') AS int)/128.0 AS decimal(18,2)) [FreeSpaceMB] ,
+       cast(cast(((cast(SIZE AS decimal(18,5)) - cast(fileproperty(name,'SpaceUsed') AS decimal(18,5))) / SIZE)*100 AS decimal(18,2)) AS varchar(10))+'%' [VolumeFree] ,
+                                                                                                                                                          'MaximumSizeinMB' = CASE max_size
+                                                                                                                                                                                  WHEN 0 THEN 'No growth is allowed.'
+                                                                                                                                                                                  WHEN -1 THEN 'Autogrowth is on.'
+                                                                                                                                                                                  WHEN 268435456 THEN 'Log file will grow to a maximum size of 2 TB.'
+                                                                                                                                                                                  ELSE CAST (max_size*1.0/128 AS nvarchar(30))
+                                                                                                                                                                              END,
+                                                                                                                                                                              growth 'GrowthValue' ,
+                                                                                                                                                                                     growth*8/1024 'GrowthValueinMB' ,
+                                                                                                                                                                                                   'GrowthIncrement' = CASE
+WHEN growth = 0 THEN 'File size is fixed and will not grow.'
+WHEN growth > 0
+     AND is_percent_growth = 0 THEN 'Growth value is in units of 8-KB pages.'
+ELSE 'Growth value is a percentage.'
+END -- END OF THIS LINE
+FROM sys.database_files --test line
 /*=====SQL Server 2000=====*/
-select
-	name [FileName]
-	,cast(size*1.0/128 as decimal(18,2)) [FileSizeinMB]
-	,cast(cast(fileproperty(name,'SpaceUsed') as decimal(18,2))/128 as decimal(18,2)) [SpaceUsedMB]
-	,cast(size/128.0 - cast(fileproperty(name,'SpaceUsed') as int)/128.0 as decimal(18,2)) [FreeSpaceMB]
-	,cast(cast(((cast(size as decimal(18,5)) - cast(fileproperty(name,'SpaceUsed') as decimal(18,5))) / size)*100 as decimal(18,2)) as varchar(10))+'%' [VolumeFree]
-	,case maxsize
-			when 0 then 'No growth is allowed.'
-			when -1 then 'Autogrowth is on.'
-			when 268435456 then 'Log file will grow to a maximum size of 2 TB.'
-			else cast (maxsize*1.0/128 as nvarchar(30))
-		end [MaximumSizeinMB]
-	,growth [GrowthValue]
-	,growth*8/1024 [GrowthValueinMB]
-from sysfiles
+SELECT name [FileName] ,
+       CAST(SIZE*1.0/128 AS decimal(18,2)) [FileSizeinMB] ,
+                                           CAST(CAST(fileproperty(name,'SpaceUsed') AS decimal(18,2))/128 AS decimal(18,2)) [SpaceUsedMB] ,
+                                                                                                                            CAST(SIZE/128.0 - CAST(fileproperty(name,'SpaceUsed') AS int)/128.0 AS decimal(18,2)) [FreeSpaceMB] ,
+CAST(CAST(((CAST(SIZE AS decimal(18,5)) - CAST(fileproperty(name,'SpaceUsed') AS decimal(18,5))) / SIZE)*100 AS decimal(18,2)) AS varchar(10))+'%' [VolumeFree] ,
+                                                                                                                                                   CASE maxsize
+                                                                                                                                                       WHEN 0 THEN 'No growth is allowed.'
+                                                                                                                                                       WHEN -1 THEN 'Autogrowth is on.'
+                                                                                                                                                       WHEN 268435456 THEN 'Log file will grow to a maximum size of 2 TB.'
+                                                                                                                                                       ELSE CAST (maxsize*1.0/128 AS nvarchar(30))
+                                                                                                                                                   END [MaximumSizeinMB] ,
+                                                                                                                                                   growth [GrowthValue] ,
+                                                                                                                                                   growth*8/1024 [GrowthValueinMB]
+FROM sysfiles
+
+
+--Change 2
+--Made a change to this file on line 20
