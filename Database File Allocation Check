@@ -19,6 +19,7 @@ WHEN growth > 0
 ELSE 'Growth value is a percentage.'
 END END --CHANGE ONE WAS HERE
 FROM sys.database_files --test line
+new line here
 /*=====SQL Server 2000=====*/
 SELECT name [FileName] ,
        CAST(SIZE*1.0/128 AS decimal(18,2)) [FileSizeinMB] ,
