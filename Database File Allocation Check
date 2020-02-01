@@ -1,4 +1,3 @@
-/*=====SQL Server 2005+=====*/
 select
 	name [FileName]
 	,cast(size*1.0/128 as decimal(18,2)) [FileSizeinMB]
@@ -21,20 +20,3 @@ select
 			else 'Growth value is a percentage.'
 		end
 from sys.database_files
---test line
-/*=====SQL Server 2000=====*/
-select
-	name [FileName]
-	,cast(size*1.0/128 as decimal(18,2)) [FileSizeinMB]
-	,cast(cast(fileproperty(name,'SpaceUsed') as decimal(18,2))/128 as decimal(18,2)) [SpaceUsedMB]
-	,cast(size/128.0 - cast(fileproperty(name,'SpaceUsed') as int)/128.0 as decimal(18,2)) [FreeSpaceMB]
-	,cast(cast(((cast(size as decimal(18,5)) - cast(fileproperty(name,'SpaceUsed') as decimal(18,5))) / size)*100 as decimal(18,2)) as varchar(10))+'%' [VolumeFree]
-	,case maxsize
-			when 0 then 'No growth is allowed.'
-			when -1 then 'Autogrowth is on.'
-			when 268435456 then 'Log file will grow to a maximum size of 2 TB.'
-			else cast (maxsize*1.0/128 as nvarchar(30))
-		end [MaximumSizeinMB]
-	,growth [GrowthValue]
-	,growth*8/1024 [GrowthValueinMB]
-from sysfiles
