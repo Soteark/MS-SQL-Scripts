@@ -27,3 +27,5 @@ WHERE database_id = db_id()
 GROUP BY name, index_id 
 HAVING Count(*) > 128
 ORDER BY 1 DESC;
+
+whats in the cache????
