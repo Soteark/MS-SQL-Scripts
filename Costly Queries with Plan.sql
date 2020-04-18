@@ -31,3 +31,5 @@ FROM q_dataset t1
 where t1.[Statement] like '%%'
 ORDER BY GrossCost DESC
 END
+
+added a new line for release
