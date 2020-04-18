@@ -33,7 +33,7 @@ order by PvtCol
 go
 
 --Start Pivot
-declare
+declaresdfsdf
 	@cols1 nvarchar(max),
 	@cols2 nvarchar(max),
 	@select_cols1 nvarchar(max),
